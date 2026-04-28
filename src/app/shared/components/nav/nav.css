@@ -1,0 +1,35 @@
+.nav-list {
+  gap: 2rem;
+}
+
+li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+a {
+  font-size: 1.25rem;
+  font-weight: 500;
+  padding: 0.5rem 1.25rem;
+  border-radius: 0.25rem;
+  transition: all 0.25s linear;
+  text-wrap: nowrap;
+  position: relative;
+}
+
+.active {
+  background-color: var(--accent-color3);
+}
+
+a:hover::after {
+  content: '';
+  width: 50%;
+  height: 2px;
+  background-color: var(--accent-color3);
+  position: absolute;
+  bottom: 0;
+  left: 25%;
+  box-shadow: 1px 1px 10px 4px var(--accent-color3);
+  border-radius: 50%;
+}

@@ -1,7 +1,12 @@
 /* #region Variables */
 :root {
-  --main-color: #2d2d2d;
-  --accent-color: #e96f1e;
+  --main-color-dark: #262a37;
+  --main-color-light: #f1f1f1;
+  --accent-color1: #3cbfc5;
+  --accent-color2: #e50648;
+  --accent-color3: #1984d0;
+  --accent-color4: #373f51;
+  --accent-color5: #d5b027;
 }
 
 /* #endregion */
@@ -21,6 +26,8 @@ html {
 
 body {
   font-family: 'Roboto', san-serif;
+  background-color: var(--main-color-light);
+  color: var(--main-color-dark);
 }
 
 ul,

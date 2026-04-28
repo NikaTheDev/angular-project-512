@@ -1,0 +1,38 @@
+header {
+  height: 80px;
+  background-color: var(--main-color-dark);
+  color: var(--main-color-light);
+  padding: 1rem;
+}
+
+.container {
+  height: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* user container buttons */
+.user-container {
+  gap: 2rem;
+}
+.user-container button {
+  background: var(--accent-color4);
+  outline: none;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+  text-wrap: nowrap;
+  gap: 0.5rem;
+  color: var(--main-color-light);
+  font-weight: 500;
+  font-size: 1.15rem;
+  transition: all 0.25s;
+}
+
+.user-container .signBtn {
+  background-color: var(--accent-color3);
+}
+
+.user-container button:hover {
+  opacity: 0.9;
+}
