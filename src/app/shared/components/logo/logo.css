@@ -9,4 +9,5 @@
   font-size: 2rem;
   color: var(--accent-color3);
   cursor: pointer;
+  text-wrap: nowrap;
 }
