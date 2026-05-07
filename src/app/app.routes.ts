@@ -17,5 +17,11 @@ export const routes: Routes = [
     title: 'Project - Contact',
   },
 
+  {
+    path: 'signin',
+    loadComponent: () => import('./pages/auth/components/sign-in/sign-in').then((m) => m.SignIn),
+    title: 'Project - Sign In',
+  },
+
   { path: '**', component: PageNotFound },
 ];

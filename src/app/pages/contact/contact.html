@@ -1,1 +1,8 @@
-<p>contact works!</p>
+<h2>Reactive Form</h2>
+
+
+  <input type="text" placeholder="city" [formControl]="city" />
+  <input type="text" placeholder="country" [formControl]="country" />
+  <input type="text" placeholder="zip" [formControl]="zipcode" />
+  <button (click)="showValues()">submit</button>
+
