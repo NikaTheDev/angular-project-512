@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { PageNotFound } from './pages/page-not-found/page-not-found';
 import { Home } from './pages/home/home';
+import { authGuard } from './shared/guards/auth-guard';
 
 export const routes: Routes = [
   { path: '', component: Home, pathMatch: 'full' },
@@ -15,6 +16,12 @@ export const routes: Routes = [
     path: 'contact',
     loadComponent: () => import('./pages/contact/contact').then((m) => m.Contact),
     title: 'Project - Contact',
+  },
+  {
+    path: 'cart',
+    loadComponent: () => import('./shared/components/cart/cart').then((m) => m.Cart),
+    title: 'Project - Cart',
+    canActivate: [authGuard],
   },
 
   {
