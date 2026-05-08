@@ -18,10 +18,5 @@ export interface ISignUpData {
   phone: string;
   zipcode: string;
   avatar: string;
-  gender: Gender;
-}
-
-export enum Gender {
-  Male = 'MALE',
-  Female = 'FEMALE',
+  gender: 'MALE' | 'FEMALE';
 }

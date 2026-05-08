@@ -1,3 +1,162 @@
 <section class="container flex-column">
   <h2>Sign Up</h2>
+
+  <form (ngSubmit)="onSubmit()" #signUpForm="ngForm" novalidate>
+    <input
+      type="text"
+      name="firstName"
+      placeholder="Enter first name"
+      autocomplete="given-name"
+      [(ngModel)]="signUpData.firstName"
+      #firstNameInput="ngModel"
+      required
+    />
+
+    @if (firstNameInput.touched && firstNameInput.hasError('required')) {
+      <span>First name is required</span>
+    }
+
+    <input
+      type="text"
+      name="lastName"
+      placeholder="Enter last name"
+      autocomplete="family-name"
+      [(ngModel)]="signUpData.lastName"
+      #lastNameInput="ngModel"
+      required
+    />
+
+    @if (lastNameInput.touched && lastNameInput.hasError('required')) {
+      <span>Last name is required</span>
+    }
+
+    <input
+      type="number"
+      name="age"
+      placeholder="Enter age"
+      autocomplete="off"
+      [(ngModel)]="signUpData.age"
+      #ageInput="ngModel"
+      required
+      min="1"
+    />
+
+    @if (ageInput.touched && ageInput.hasError('required')) {
+      <span>Age is required</span>
+    } @else if (ageInput.touched && ageInput.hasError('min')) {
+      <span>Age must be greater than 0</span>
+    }
+
+    <input
+      type="email"
+      name="email"
+      placeholder="Enter email"
+      autocomplete="email"
+      [(ngModel)]="signUpData.email"
+      #emailInput="ngModel"
+      required
+      email
+    />
+
+    @if (emailInput.touched && emailInput.hasError('required')) {
+      <span>Email is required</span>
+    } @else if (emailInput.touched && emailInput.hasError('email')) {
+      <span>Enter a valid email</span>
+    }
+
+    <input
+      type="password"
+      name="password"
+      placeholder="Enter password"
+      autocomplete="new-password"
+      [(ngModel)]="signUpData.password"
+      #passwordInput="ngModel"
+      required
+      minlength="8"
+    />
+
+    @if (passwordInput.touched && passwordInput.hasError('required')) {
+      <span>Password is required</span>
+    } @else if (passwordInput.touched && passwordInput.hasError('minlength')) {
+      <span>Password must be at least 8 characters</span>
+    }
+
+    <input
+      type="text"
+      name="address"
+      placeholder="Enter address"
+      autocomplete="street-address"
+      [(ngModel)]="signUpData.address"
+      #addressInput="ngModel"
+      required
+    />
+
+    @if (addressInput.touched && addressInput.hasError('required')) {
+      <span>Address is required</span>
+    }
+
+    <input
+      type="tel"
+      name="phone"
+      placeholder="Enter phone"
+      autocomplete="tel"
+      [(ngModel)]="signUpData.phone"
+      #phoneInput="ngModel"
+      required
+    />
+
+    @if (phoneInput.touched && phoneInput.hasError('required')) {
+      <span>Phone is required</span>
+    }
+
+    <input
+      type="text"
+      name="zipcode"
+      placeholder="Enter zip code"
+      autocomplete="postal-code"
+      [(ngModel)]="signUpData.zipcode"
+      #zipcodeInput="ngModel"
+      required
+    />
+
+    @if (zipcodeInput.touched && zipcodeInput.hasError('required')) {
+      <span>Zip code is required</span>
+    }
+
+    <input
+      type="url"
+      name="avatar"
+      placeholder="Enter avatar URL"
+      autocomplete="off"
+      [(ngModel)]="signUpData.avatar"
+      #avatarInput="ngModel"
+      required
+    />
+
+    @if (avatarInput.touched && avatarInput.hasError('required')) {
+      <span>Avatar URL is required</span>
+    }
+
+    <select
+      name="gender"
+      [(ngModel)]="signUpData.gender"
+      #genderInput="ngModel"
+      required
+    >
+      <option value="MALE">Male</option>
+      <option value="FEMALE">Female</option>
+    </select>
+
+    @if (genderInput.touched && genderInput.hasError('required')) {
+      <span>Gender is required</span>
+    }
+
+    <button type="submit" [disabled]="signUpForm.invalid">
+      Sign Up
+    </button>
+
+    <div class="auth-links">
+      <a routerLink="/auth/sign-in">Already have an account?</a>
+    </div>
+  </form>
 </section>
