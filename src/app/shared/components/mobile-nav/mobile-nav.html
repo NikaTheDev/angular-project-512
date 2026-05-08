@@ -1,0 +1,23 @@
+<nav>
+  <ul class="flex-column nav-list">
+    <li>
+      <a
+        routerLink="/"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        (click)="this.isClicked.emit()"
+      >
+        Home</a
+      >
+    </li>
+    <li>
+      <a routerLink="/about" routerLinkActive="active" (click)="this.isClicked.emit()">About Us</a>
+    </li>
+    <li>
+      <a routerLink="/contact" routerLinkActive="active" (click)="this.isClicked.emit()">Contact</a>
+    </li>
+    <li>
+      <a routerLink="/auth" routerLinkActive="active" (click)="this.isClicked.emit()">Sign In</a>
+    </li>
+  </ul>
+</nav>

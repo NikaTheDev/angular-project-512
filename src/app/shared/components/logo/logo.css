@@ -11,3 +11,13 @@
   cursor: pointer;
   text-wrap: nowrap;
 }
+
+@media (max-width: 600px) {
+  .logo img {
+    width: 50px;
+  }
+
+  .logo h1 {
+    font-size: 1.75rem;
+  }
+}

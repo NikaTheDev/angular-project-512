@@ -9,6 +9,11 @@
       <button class="signBtn flex-row" routerLink="/auth">
         <img src="/assets/icons/user.svg" alt="" />
       </button>
+      <button class="burgerBtn flex-row" (click)="menuToggle()" [class.openedMenu]="isMenuOpen()">
+        <img [src]="isMenuOpen() ? '/assets/icons/close.svg' : '/assets/icons/menu.svg'" alt="" />
+      </button>
     </div>
   </div>
 </header>
+
+<app-mobile-nav [class.open]="isMenuOpen()" (isClicked)="menuToggle()"></app-mobile-nav>

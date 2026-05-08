@@ -36,3 +36,44 @@ header {
 .user-container button:hover {
   opacity: 0.9;
 }
+
+.user-container img {
+  width: 24px;
+  height: 24px;
+}
+
+/* burger btn */
+.burgerBtn {
+  display: none;
+  z-index: 100;
+}
+
+.user-container .openedMenu {
+  background-color: var(--accent-color2);
+}
+
+app-mobile-nav {
+  transform: translateX(100%);
+  transition: all 0.3s;
+}
+
+.open {
+  transform: translateX(0);
+}
+
+/* responsive styles */
+
+@media (max-width: 980px) {
+  app-nav,
+  .signBtn {
+    display: none;
+  }
+
+  .user-container {
+    gap: 1rem;
+  }
+
+  .user-container .burgerBtn {
+    display: flex;
+  }
+}
