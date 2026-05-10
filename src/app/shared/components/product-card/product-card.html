@@ -1,6 +1,40 @@
-<div class="card flex-column">
-  <img [src]="product.thumbnail" alt="" />
-  <h2>{{ product.title }}</h2>
-  <p>{{ product.description }}</p>
-  <h3>{{ product.price.current }}</h3>
-</div>
+<article class="product-card">
+  <div class="image-box">
+    @if (product.price.discountPercentage > 0) {
+      <span class="discount">-{{ product.price.discountPercentage }}%</span>
+    }
+
+    <img [src]="product.thumbnail" [alt]="product.title" />
+  </div>
+
+  <div class="card-body">
+    <div class="card-top">
+      <span class="category">{{ product.category.name }}</span>
+      <span class="rating">★ {{ product.rating }}</span>
+    </div>
+
+    <h2>{{ product.title }}</h2>
+
+    <p class="description">{{ product.description }}</p>
+
+    <div class="meta">
+      <span>Brand: {{ product.brand }}</span>
+      <span>Stock: {{ product.stock }}</span>
+      <span>Warranty: {{ product.warranty }} months</span>
+    </div>
+
+    <div class="price-row">
+      <div>
+        <strong>{{ product.price.current }} {{ product.price.currency }}</strong>
+
+        @if (product.price.beforeDiscount > product.price.current) {
+          <span class="old-price">
+            {{ product.price.beforeDiscount }} {{ product.price.currency }}
+          </span>
+        }
+      </div>
+
+      <button type="button">Add to Cart</button>
+    </div>
+  </div>
+</article>

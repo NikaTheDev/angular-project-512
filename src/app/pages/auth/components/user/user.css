@@ -1,0 +1,271 @@
+:host {
+  flex: 1;
+  display: flex;
+}
+
+.account-page {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.account-sidebar,
+.account-content {
+  border: 1px solid #e4e7ee;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 16px 40px rgb(15 23 42 / 8%);
+}
+
+.account-sidebar {
+  padding: 1.25rem;
+  position: sticky;
+  top: 1rem;
+}
+
+.sidebar-user {
+  padding-bottom: 1.25rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid #e4e7ee;
+  text-align: center;
+}
+
+.sidebar-user img {
+  width: 88px;
+  height: 88px;
+  margin-bottom: 0.75rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--accent-color1);
+}
+
+.sidebar-user h3 {
+  color: var(--accent-color4);
+  font-size: 1.1rem;
+}
+
+.sidebar-user p {
+  margin-top: 0.25rem;
+  color: #667085;
+  font-size: 0.9rem;
+  word-break: break-word;
+}
+
+.sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sidebar-menu button,
+.logout-btn {
+  width: 100%;
+  height: 2.6rem;
+  border: 0;
+  border-radius: 6px;
+  font-weight: 700;
+  text-align: left;
+  padding: 0 0.9rem;
+}
+
+.sidebar-menu button {
+  background: transparent;
+  color: var(--main-color-dark);
+}
+
+.sidebar-menu button:hover,
+.sidebar-menu button.active {
+  background: var(--accent-color4);
+  color: #fff;
+}
+
+.logout-btn {
+  margin-top: 1.25rem;
+  background: #fef3f2;
+  color: #b42318;
+}
+
+.account-content {
+  min-height: 420px;
+  padding: 1.5rem;
+}
+
+.content-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.content-header h2,
+.empty-section h2 {
+  color: var(--accent-color4);
+  font-size: 1.8rem;
+}
+
+.badge {
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.verified {
+  color: #067647;
+  background: #ecfdf3;
+}
+
+.not-verified {
+  color: #b42318;
+  background: #fef3f2;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.info-item {
+  padding: 1rem;
+  border: 1px solid #e4e7ee;
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+.info-item.wide {
+  grid-column: span 2;
+}
+
+.info-item span {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: #667085;
+  font-size: 0.8rem;
+}
+
+.info-item strong {
+  color: var(--main-color-dark);
+  font-size: 1rem;
+  word-break: break-word;
+}
+
+.empty-section p {
+  margin-top: 0.5rem;
+  color: #667085;
+}
+
+.settings-section {
+  max-width: 560px;
+}
+
+.settings-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.settings-actions button {
+  width: 100%;
+  height: 2.75rem;
+  border: 0;
+  border-radius: 6px;
+  background: var(--accent-color4);
+  color: #fff;
+  font-weight: 700;
+}
+
+.settings-actions button:hover {
+  background: #262a37;
+}
+
+.settings-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 1rem;
+  border: 1px solid #e4e7ee;
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+.settings-form h3 {
+  color: var(--accent-color4);
+  font-size: 1.2rem;
+}
+
+.settings-form input,
+.settings-form select,
+.settings-form button {
+  width: 100%;
+  height: 2.6rem;
+  border-radius: 6px;
+  font: inherit;
+}
+
+.settings-form input,
+.settings-form select {
+  padding: 0 0.8rem;
+  border: 1px solid #cfd5e1;
+  background: #fff;
+  color: var(--main-color-dark);
+  outline: none;
+}
+
+.settings-form input:focus,
+.settings-form select:focus {
+  border-color: var(--accent-color4);
+  box-shadow: 0 0 0 3px rgb(55 63 81 / 14%);
+}
+
+.settings-form button {
+  border: 0;
+  background: var(--accent-color4);
+  color: #fff;
+  font-weight: 700;
+}
+
+.settings-form button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.form-message {
+  color: var(--accent-color3);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .account-page {
+    grid-template-columns: 1fr;
+  }
+
+  .account-sidebar {
+    position: static;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .info-item.wide {
+    grid-column: span 1;
+  }
+
+  .content-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 600px) {
+  .settings-actions {
+    flex-direction: column;
+  }
+}

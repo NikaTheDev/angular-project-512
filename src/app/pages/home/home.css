@@ -1,3 +1,90 @@
-section {
-  flex-wrap: wrap;
+:host {
+  flex: 1;
+  display: block;
+  width: 100%;
+}
+
+.products-section {
+  width: 100%;
+  padding: 3rem 1rem;
+}
+
+.section-header {
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.section-header span {
+  color: var(--accent-color1);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.section-header h2 {
+  margin-top: 0.35rem;
+  color: var(--accent-color4);
+  font-size: 2rem;
+}
+
+.section-header p {
+  color: #667085;
+  font-weight: 700;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+.products-grid app-product-card {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.pagination button {
+  min-width: 90px;
+  height: 2.5rem;
+  border: 0;
+  border-radius: 6px;
+  background: var(--accent-color4);
+  color: #fff;
+  font-weight: 700;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination span {
+  color: var(--accent-color4);
+  font-weight: 700;
+}
+
+.loading-text {
+  color: #667085;
+}
+
+@media (max-width: 700px) {
+  .section-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
 }

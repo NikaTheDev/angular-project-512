@@ -1,5 +1,244 @@
-<h2>User Profile</h2>
-@if(userData()) {
-  <h3>{{ userData().email }}</h3>
-}
-<button (click)="logOut()">Log Out</button>
+<section class="account-page">
+  <aside class="account-sidebar">
+    @if (userData(); as user) {
+      <div class="sidebar-user">
+        <img [src]="user.avatar" [alt]="user.firstName" />
+        <h3>{{ user.firstName }} {{ user.lastName }}</h3>
+        <p>{{ user.email }}</p>
+      </div>
+    }
+
+    <div class="sidebar-menu">
+      <button type="button" [class.active]="activeSection() === 'profile'" (click)="showProfile()">
+        Profile
+      </button>
+
+      <button
+        type="button"
+        [class.active]="activeSection() === 'favorites'"
+        (click)="showFavorites()"
+      >
+        Favorite Products
+      </button>
+
+      <button type="button" [class.active]="activeSection() === 'orders'" (click)="showOrders()">
+        Orders
+      </button>
+
+      <button
+        type="button"
+        [class.active]="activeSection() === 'settings'"
+        (click)="showSettings()"
+      >
+        Settings
+      </button>
+    </div>
+
+    <button class="logout-btn" type="button" (click)="logOut()">Log Out</button>
+  </aside>
+
+  <div class="account-content">
+    @if (userData(); as user) {
+      @if (activeSection() === 'profile') {
+        <div class="content-header">
+          <h2>Profile Information</h2>
+
+          @if (user.verified) {
+            <span class="badge verified">Verified</span>
+          } @else {
+            <span class="badge not-verified">Not verified</span>
+          }
+        </div>
+
+        <div class="info-grid">
+          <div class="info-item">
+            <span>First Name</span>
+            <strong>{{ user.firstName }}</strong>
+          </div>
+
+          <div class="info-item">
+            <span>Last Name</span>
+            <strong>{{ user.lastName }}</strong>
+          </div>
+
+          <div class="info-item">
+            <span>Email</span>
+            <strong>{{ user.email }}</strong>
+          </div>
+
+          <div class="info-item">
+            <span>Phone</span>
+            <strong>{{ user.phone }}</strong>
+          </div>
+
+          <div class="info-item">
+            <span>Age</span>
+            <strong>{{ user.age }}</strong>
+          </div>
+
+          <div class="info-item">
+            <span>Gender</span>
+            <strong>{{ user.gender }}</strong>
+          </div>
+
+          <div class="info-item wide">
+            <span>Address</span>
+            <strong>{{ user.address }}</strong>
+          </div>
+
+          <div class="info-item">
+            <span>Zipcode</span>
+            <strong>{{ user.zipcode }}</strong>
+          </div>
+
+          <div class="info-item">
+            <span>Role</span>
+            <strong>{{ user.role }}</strong>
+          </div>
+        </div>
+      }
+
+      @if (activeSection() === 'favorites') {
+        <div class="empty-section">
+          <h2>Favorite Products</h2>
+          <p>Your favorite products will appear here.</p>
+        </div>
+      }
+
+      @if (activeSection() === 'orders') {
+        <div class="empty-section">
+          <h2>Orders</h2>
+          <p>Your purchased products will appear here.</p>
+        </div>
+      }
+
+      @if (activeSection() === 'settings') {
+        <div class="settings-section">
+          <div class="content-header">
+            <h2>Settings</h2>
+          </div>
+
+          @if (!activeSettingsForm()) {
+            <div class="settings-actions">
+              <button type="button" (click)="showEditProfileForm()">Edit Profile</button>
+              <button type="button" (click)="showPasswordForm()">Change Password</button>
+            </div>
+          }
+
+          @if (activeSettingsForm() === 'profile') {
+            <form class="settings-form" (ngSubmit)="updateProfile()" #profileForm="ngForm">
+              <h3>Edit Profile</h3>
+
+              <input
+                type="text"
+                name="firstName"
+                placeholder="First name"
+                required
+                [(ngModel)]="editProfile.firstName"
+              />
+
+              <input
+                type="text"
+                name="lastName"
+                placeholder="Last name"
+                required
+                [(ngModel)]="editProfile.lastName"
+              />
+
+              <input
+                type="number"
+                name="age"
+                placeholder="Age"
+                required
+                [(ngModel)]="editProfile.age"
+              />
+
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                required
+                [(ngModel)]="editProfile.email"
+              />
+
+              <input
+                type="text"
+                name="phone"
+                placeholder="Phone"
+                required
+                [(ngModel)]="editProfile.phone"
+              />
+
+              <input
+                type="text"
+                name="address"
+                placeholder="Address"
+                required
+                [(ngModel)]="editProfile.address"
+              />
+
+              <input
+                type="text"
+                name="zipcode"
+                placeholder="Zipcode"
+                required
+                [(ngModel)]="editProfile.zipcode"
+              />
+
+              <input
+                type="url"
+                name="avatar"
+                placeholder="Avatar URL"
+                required
+                [(ngModel)]="editProfile.avatar"
+              />
+
+              <select name="gender" required [(ngModel)]="editProfile.gender">
+                <option value="MALE">Male</option>
+                <option value="FEMALE">Female</option>
+                <option value="OTHER">Other</option>
+              </select>
+
+              @if (profileMessage()) {
+                <p class="form-message">{{ profileMessage() }}</p>
+              }
+
+              <button type="submit" [disabled]="profileForm.invalid">Save Profile</button>
+            </form>
+          }
+
+          @if (activeSettingsForm() === 'password') {
+            <form class="settings-form" (ngSubmit)="changePassword()" #passwordForm="ngForm">
+              <h3>Change Password</h3>
+
+              <input
+                type="password"
+                name="oldPassword"
+                placeholder="Old password"
+                required
+                [(ngModel)]="passwordData.oldPassword"
+              />
+
+              <input
+                type="password"
+                name="newPassword"
+                placeholder="New password"
+                required
+                minlength="6"
+                [(ngModel)]="passwordData.newPassword"
+              />
+
+              @if (passwordMessage()) {
+                <p class="form-message">{{ passwordMessage() }}</p>
+              }
+
+              <button type="submit" [disabled]="passwordForm.invalid">Change Password</button>
+            </form>
+          }
+        </div>
+      }
+    } @else {
+      <p>Loading profile...</p>
+    }
+  </div>
+</section>

@@ -11,10 +11,10 @@ import { ProductCard } from '../../shared/components/product-card/product-card';
 export class Home {
   productsList = signal<any>(null);
 
-  private http = inject(HttpClient);
-
   pageSize = signal(10);
   pageIndex = signal(1);
+
+  private http = inject(HttpClient);
 
   ngOnInit() {
     this.getProducts();
@@ -22,7 +22,7 @@ export class Home {
 
   getProducts() {
     this.http
-      .get('https://api.everrest.educata.dev/shop/products/all', {
+      .get<any>('https://api.everrest.educata.dev/shop/products/search', {
         params: {
           page_size: this.pageSize(),
           page_index: this.pageIndex(),
@@ -36,13 +36,15 @@ export class Home {
   }
 
   nextPage() {
-    this.pageIndex.update((x) => x + 1);
-    this.getProducts();
+    if (this.productsList() && this.pageIndex() * this.pageSize() < this.productsList().total) {
+      this.pageIndex.update((page) => page + 1);
+      this.getProducts();
+    }
   }
 
   prevPage() {
     if (this.pageIndex() > 1) {
-      this.pageIndex.update((x) => x - 1);
+      this.pageIndex.update((page) => page - 1);
       this.getProducts();
     }
   }
