@@ -1,10 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, signal } from '@angular/core';
 import { ProductCard } from '../../shared/components/product-card/product-card';
+import { HeroSlider } from '../../shared/components/hero-slider/hero-slider';
 
 @Component({
   selector: 'app-home',
-  imports: [ProductCard],
+  imports: [ProductCard, HeroSlider],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })

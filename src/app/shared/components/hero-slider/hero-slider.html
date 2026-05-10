@@ -1,0 +1,28 @@
+<section class="hero-slider">
+  @for (slide of slides; track slide.title; let index = $index) {
+    @if (activeSlide() === index) {
+      <div class="slide">
+        <img [src]="slide.image" [alt]="slide.title" />
+
+        <div class="slide-overlay"></div>
+
+        <div class="slide-content">
+          <span>Tech Shop</span>
+          <h1>{{ slide.title }}</h1>
+          <p>{{ slide.text }}</p>
+          <button type="button">Shop Now</button>
+        </div>
+      </div>
+    }
+  }
+
+  <div class="slider-dots">
+    @for (slide of slides; track slide.title; let index = $index) {
+      <button
+        type="button"
+        [class.active]="activeSlide() === index"
+        (click)="goToSlide(index)"
+      ></button>
+    }
+  </div>
+</section>

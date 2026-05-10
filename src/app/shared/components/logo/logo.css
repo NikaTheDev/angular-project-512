@@ -1,23 +1,28 @@
+.logo {
+  gap: 0.6rem;
+}
+
 .logo img {
-  width: 60px;
+  width: 48px;
   max-height: 100%;
   object-fit: cover;
   cursor: pointer;
 }
 
 .logo h1 {
-  font-size: 2rem;
+  font-size: 1.55rem;
   color: var(--accent-color3);
   cursor: pointer;
   text-wrap: nowrap;
+  font-weight: 800;
 }
 
 @media (max-width: 600px) {
   .logo img {
-    width: 50px;
+    width: 42px;
   }
 
   .logo h1 {
-    font-size: 1.75rem;
+    font-size: 1.35rem;
   }
 }
