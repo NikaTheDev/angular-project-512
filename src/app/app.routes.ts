@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { PageNotFound } from './pages/page-not-found/page-not-found';
 import { Home } from './pages/home/home';
 import { authGuard } from './shared/guards/auth-guard';
+import { guestGuard } from './shared/guards/guest-guard';
 
 export const routes: Routes = [
   { path: '', component: Home, pathMatch: 'full' },
@@ -25,8 +26,15 @@ export const routes: Routes = [
   },
 
   {
+    path: 'user',
+    loadComponent: () => import('./pages/auth/components/user/user').then((m) => m.User),
+    title: 'Project - User Page',
+  },
+
+  {
     path: 'auth',
     loadComponent: () => import('./pages/auth/auth').then((m) => m.Auth),
+    canActivate: [guestGuard],
     children: [
       { path: '', redirectTo: 'sign-in', pathMatch: 'full' },
       {

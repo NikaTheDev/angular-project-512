@@ -1,1 +1,5 @@
-<p>user works!</p>
+<h2>User Profile</h2>
+@if(userData()) {
+  <h3>{{ userData().email }}</h3>
+}
+<button (click)="logOut()">Log Out</button>
