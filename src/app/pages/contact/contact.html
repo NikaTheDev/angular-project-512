@@ -1,8 +1,176 @@
-<h2>Reactive Form</h2>
+<section class="contact-hero">
+  <div class="container">
+    <span>Contact Us</span>
+    <h1>Need help choosing the right device?</h1>
+    <p>
+      Reach out for product questions, delivery details, account support or anything related to your
+      Tech Shop order.
+    </p>
+  </div>
+</section>
 
+<section class="contact-info-section">
+  <div class="container info-grid">
+    <div class="info-card">
+      <span>Visit Us</span>
+      <h2>Tech Shop Showroom</h2>
+      <p>42 Innovation Avenue, Tbilisi, Georgia</p>
+      <p>Entrance from the main business center lobby.</p>
+    </div>
 
-  <input type="text" placeholder="city" [formControl]="city" />
-  <input type="text" placeholder="country" [formControl]="country" />
-  <input type="text" placeholder="zip" [formControl]="zipcode" />
-  <button (click)="showValues()">submit</button>
+    <div class="info-card">
+      <span>Call</span>
+      <h2>Support Line</h2>
+      <p>+995 32 2 45 67 89</p>
+      <p>Available Monday to Saturday.</p>
+    </div>
 
+    <div class="info-card">
+      <span>Email</span>
+      <h2>Customer Care</h2>
+      <p>support@techshop.example</p>
+      <p>We usually reply within one business day.</p>
+    </div>
+  </div>
+</section>
+
+<section class="map-section">
+  <div class="container map-layout">
+    <div class="map-text">
+      <span>Location</span>
+      <h2>Find our pickup point and support desk</h2>
+      <p>
+        Customers can visit the showroom for pickup assistance, product guidance and return
+        drop-offs during working hours.
+      </p>
+
+      <div class="hours-box">
+        <strong>Working Hours</strong>
+        <p>Monday - Friday: 10:00 - 19:00</p>
+        <p>Saturday: 11:00 - 16:00</p>
+        <p>Sunday: Closed</p>
+      </div>
+    </div>
+
+    <div class="map-box">
+      <iframe
+        title="Tech Shop map"
+        src="https://www.google.com/maps?q=Tbilisi%20Georgia&output=embed"
+        loading="lazy"
+      ></iframe>
+    </div>
+  </div>
+</section>
+
+<section class="support-section">
+  <div class="container">
+    <div class="section-header">
+      <span>Support Options</span>
+      <h2>Choose the fastest way to reach us</h2>
+    </div>
+
+    <div class="support-grid">
+      <div>
+        <strong>Order questions</strong>
+        <p>Ask about delivery dates, order status or return steps.</p>
+      </div>
+
+      <div>
+        <strong>Product advice</strong>
+        <p>Compare laptops, phones and accessories before buying.</p>
+      </div>
+
+      <div>
+        <strong>Account help</strong>
+        <p>Get support with sign in, profile updates and password changes.</p>
+      </div>
+
+      <div>
+        <strong>Business requests</strong>
+        <p>Contact us for bulk orders, office setups or team equipment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-form-section">
+  <div class="container form-layout">
+    <div class="form-text">
+      <span>Send A Message</span>
+      <h2>Tell us what you need help with</h2>
+      <p>
+        Use this form for product questions, delivery details, order issues or business requests.
+        Later you can connect these fields to a reactive form without changing the page design.
+      </p>
+    </div>
+
+    <form class="contact-form">
+      <div class="form-row">
+        <label>
+          First name
+          <input type="text" placeholder="Enter first name" required minlength="2" maxlength="30" />
+        </label>
+
+        <label>
+          Last name
+          <input type="text" placeholder="Enter last name" required minlength="2" maxlength="30" />
+        </label>
+      </div>
+
+      <label>
+        Email address
+        <input type="email" placeholder="name@example.com" required />
+      </label>
+
+      <label>
+        Phone number
+        <input type="tel" placeholder="+995 555 12 34 56" required pattern="^\+?[0-9\s-]{9,20}$" />
+      </label>
+
+      <label>
+        Subject
+        <input
+          type="text"
+          placeholder="What is this message about?"
+          required
+          minlength="5"
+          maxlength="80"
+        />
+      </label>
+
+      <label>
+        Message
+        <textarea
+          rows="6"
+          placeholder="Write your message"
+          required
+          minlength="20"
+          maxlength="500"
+        ></textarea>
+      </label>
+
+      <label class="checkbox-label">
+        <input type="checkbox" required />
+        <span>I agree to be contacted about this request.</span>
+      </label>
+
+      <div class="form-actions">
+        <button>Send Message</button>
+        <p>We usually respond within one business day.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<section class="contact-note-section">
+  <div class="container contact-note">
+    <div>
+      <span>Quick Note</span>
+      <h2>For faster support, include your order number.</h2>
+      <p>
+        If your message is about a purchase, include the product name, order number and the email
+        used during checkout.
+      </p>
+    </div>
+  </div>
+</section>

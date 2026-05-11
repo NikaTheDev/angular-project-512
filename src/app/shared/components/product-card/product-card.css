@@ -111,6 +111,24 @@ h2 {
   word-break: break-word;
 }
 
+.stock-badge {
+  width: fit-content;
+  padding: 0.32rem 0.55rem;
+  border-radius: 0.25rem;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.in-stock {
+  color: #067647;
+  background: #ecfdf3;
+}
+
+.out-stock {
+  color: #b42318;
+  background: #fef3f2;
+}
+
 .price-row {
   display: flex;
   justify-content: space-between;
@@ -149,6 +167,11 @@ button {
 
 button:hover {
   background: #262a37;
+}
+
+button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
 }
 
 @media (max-width: 480px) {

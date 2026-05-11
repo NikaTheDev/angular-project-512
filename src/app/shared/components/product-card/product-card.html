@@ -1,4 +1,4 @@
-<article class="product-card">
+<div class="product-card">
   <div class="image-box">
     @if (product.price.discountPercentage > 0) {
       <span class="discount">-{{ product.price.discountPercentage }}%</span>
@@ -19,9 +19,14 @@
 
     <div class="meta">
       <span>Brand: {{ product.brand }}</span>
-      <span>Stock: {{ product.stock }}</span>
-      <span>Warranty: {{ product.warranty }} months</span>
+      <span>Warranty: {{ product.warranty }} years</span>
     </div>
+
+    @if (product.stock > 0) {
+      <span class="stock-badge in-stock">{{ product.stock }} in stock</span>
+    } @else {
+      <span class="stock-badge out-stock">Out of stock</span>
+    }
 
     <div class="price-row">
       <div>
@@ -34,7 +39,7 @@
         }
       </div>
 
-      <button type="button">Add to Cart</button>
+      <button type="button" [disabled]="product.stock === 0">Add to Cart</button>
     </div>
   </div>
-</article>
+</div>

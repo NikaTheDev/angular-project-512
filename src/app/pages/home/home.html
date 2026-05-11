@@ -1,34 +1,144 @@
-<!-- <app-hero-slider></app-hero-slider> -->
-<section class="products-section">
+<app-hero-slider></app-hero-slider>
+
+<section class="home-products">
   <div class="container">
     <div class="section-header">
-      <div>
-        <h2>Our Best Products</h2>
-      </div>
+      <span>Top Sales</span>
+      <h2>Most wanted tech this week</h2>
+      <p>Customer favorites with strong value, fresh pricing and everyday reliability.</p>
     </div>
 
-    @if (productsList()) {
-      <div class="products-grid">
-        @for (item of productsList().products; track item._id) {
-          <app-product-card [product]="item"></app-product-card>
-        }
+    <div class="products-grid">
+      @for (item of products().slice(0, 4); track item._id) {
+        <app-product-card [product]="item"></app-product-card>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="home-products">
+  <div class="container">
+    <div class="section-header">
+      <span>Special Offer</span>
+      <h2>Limited picks worth checking</h2>
+      <p>Selected deals with useful specs, clear warranty and quick stock visibility.</p>
+    </div>
+
+    <div class="products-grid">
+      @for (item of products().slice(4, 8); track item._id) {
+        <app-product-card [product]="item"></app-product-card>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="promo-section">
+  <div class="container">
+    <div class="promo-content">
+      <span>Why Shop Here</span>
+      <h2>Tech that fits your day, not just your desk</h2>
+      <p>
+        Browse products with the details that actually matter: price, stock, warranty, rating and
+        real product images. The page is built to help you compare faster and choose with less
+        guesswork.
+      </p>
+    </div>
+
+    <div class="benefits-row">
+      <div>
+        <span>01</span>
+        <strong>Curated devices</strong>
+        <p>
+          Popular laptops and phones are grouped around practical use, not random catalog noise.
+        </p>
       </div>
 
-      <div class="pagination">
-        <button type="button" (click)="prevPage()" [disabled]="pageIndex() === 1">Prev</button>
-
-        <span>Page {{ pageIndex() }}</span>
-
-        <button
-          type="button"
-          (click)="nextPage()"
-          [disabled]="pageIndex() * pageSize() >= productsList().total"
-        >
-          Next
-        </button>
+      <div>
+        <span>02</span>
+        <strong>Clear product details</strong>
+        <p>Each card shows the essentials before you open the full product page.</p>
       </div>
-    } @else {
-      <p class="loading-text">Loading products...</p>
-    }
+
+      <div>
+        <span>03</span>
+        <strong>Simple shopping flow</strong>
+        <p>Move from discovery to product details with fewer clicks and cleaner navigation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="guide-section">
+  <div class="container">
+    <div class="section-header">
+      <span>Shopping Checklist</span>
+      <h2>Find the right tech faster</h2>
+      <p>Use these quick checks before opening a product page or adding an item to your cart.</p>
+    </div>
+
+    <div class="guide-cards">
+      <div>
+        <span>01</span>
+        <h3>Check availability first</h3>
+        <p>Stock status helps you avoid choosing a product that cannot be ordered right now.</p>
+      </div>
+
+      <div>
+        <span>02</span>
+        <h3>Compare current and old price</h3>
+        <p>Look at the discount together with the final price, not only the percentage badge.</p>
+      </div>
+
+      <div>
+        <span>03</span>
+        <h3>Open the gallery</h3>
+        <p>Product photos help you understand design, ports, size and overall condition better.</p>
+      </div>
+
+      <div>
+        <span>04</span>
+        <h3>Read warranty details</h3>
+        <p>Warranty length is useful when comparing similar products from different brands.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats-section">
+  <div class="container stats-row">
+    <div>
+      <strong>2-4 days</strong>
+      <span>Delivery window</span>
+    </div>
+
+    <div>
+      <strong>14 days</strong>
+      <span>Easy returns</span>
+    </div>
+
+    <div>
+      <strong>$99+</strong>
+      <span>Free shipping</span>
+    </div>
+
+    <div>
+      <strong>24/7</strong>
+      <span>Order tracking</span>
+    </div>
+  </div>
+</section>
+
+<section class="shipping-section">
+  <div class="container shipping-content">
+    <div>
+      <span>Fast Delivery</span>
+      <h2>Free shipping on orders over $99, with returns that stay simple</h2>
+      <p>
+        Order tracking, standard delivery in 2-4 business days and a 14-day return window are
+        included with every purchase.
+      </p>
+    </div>
+
+    <a routerLink="/products">Shop Products</a>
   </div>
 </section>

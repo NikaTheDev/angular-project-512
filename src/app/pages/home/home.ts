@@ -1,52 +1,37 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, inject, signal } from '@angular/core';
-import { ProductCard } from '../../shared/components/product-card/product-card';
+import { Component } from '@angular/core';
+import { inject, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { HeroSlider } from '../../shared/components/hero-slider/hero-slider';
+import { ProductCard } from '../../shared/components/product-card/product-card';
 
 @Component({
   selector: 'app-home',
-  imports: [ProductCard, HeroSlider],
+  imports: [HeroSlider, ProductCard, RouterLink],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
 export class Home {
-  productsList = signal<any>(null);
-
-  pageSize = signal(10);
-  pageIndex = signal(1);
+  products = signal<any[]>([]);
 
   private http = inject(HttpClient);
 
   ngOnInit() {
-    this.getProducts();
+    this.getHomeProducts();
   }
 
-  getProducts() {
+  getHomeProducts() {
     this.http
       .get<any>('https://api.everrest.educata.dev/shop/products/search', {
         params: {
-          page_size: this.pageSize(),
-          page_index: this.pageIndex(),
+          page_size: 8,
+          page_index: 1,
         },
       })
       .subscribe({
         next: (data) => {
-          this.productsList.set(data);
+          this.products.set(data.products);
         },
       });
-  }
-
-  nextPage() {
-    if (this.productsList() && this.pageIndex() * this.pageSize() < this.productsList().total) {
-      this.pageIndex.update((page) => page + 1);
-      this.getProducts();
-    }
-  }
-
-  prevPage() {
-    if (this.pageIndex() > 1) {
-      this.pageIndex.update((page) => page - 1);
-      this.getProducts();
-    }
   }
 }
